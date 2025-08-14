@@ -8,7 +8,7 @@ This repository uses Go workspaces to manage multiple Operion-related projects i
 
 - **operion** - Main Operion project
 - **interfaces** - Operion interfaces
-- **operion-docs** - Operion documentation
+- **operion.dev** - Operion documentation
 
 ## Setup
 
@@ -21,7 +21,7 @@ make setup
 This will clone the following repositories into the workspace:
 - `git@github.com:dukex/operion.git` → `./operion`
 - `git@github.com:dukex/interfaces.git` → `./interfaces`
-- `git@github.com:dukex/operion-docs.git` → `./operion-docs`
+- `git@github.com:dukex/operion.dev.git` → `./operion.dev`
 
 ## Requirements
 
@@ -44,5 +44,5 @@ operion-flow/
 ├── Makefile         # Setup automation
 ├── operion/         # Main Operion project (cloned)
 ├── interfaces/      # Operion interfaces (cloned)
-└── operion-docs/    # Documentation (cloned)
+└── operion.dev/    # Documentation (cloned)
 ```
