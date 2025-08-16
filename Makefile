@@ -16,6 +16,12 @@ setup: ./operion ./interfaces ./operion.dev
 
 # ---
 
+sync: ./operion ./interfaces ./operion.dev
+	@echo "Syncing the repositories..."
+	@git pull origin main --rebase
+	@cd ./operion && git pull origin main --rebase
+	@cd ./interfaces && git pull origin main --rebase
+	@cd ./operion.dev && git pull origin main --rebase
 
 .PHONY: clean
 clean:
