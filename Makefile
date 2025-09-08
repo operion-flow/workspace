@@ -4,15 +4,15 @@ setup: ./operion ./interfaces ./operion.dev
 
 ./operion:
 	@echo "Clonning the operion repository..."
-	@git clone git@github.com:dukex/operion.git operion
+	@git clone git@github.com:operion-flow/operion.git operion
 
 ./interfaces:
 	@echo "Clonning the interfaces repository..."
-	@git clone git@github.com:dukex/interfaces.git interfaces
+	@git clone git@github.com:operion-flow/interfaces.git interfaces
 
 ./operion.dev:
 	@echo "Clonning the operion.dev repository..."
-	@git clone git@github.com:dukex/operion.dev.git operion.dev
+	@git clone git@github.com:operion-flow/operion.dev.git operion.dev
 
 # ---
 
