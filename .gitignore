@@ -1,5 +1,5 @@
-interfaces/
-operion.dev/
 operion/
-test/
+operion.dev/
+editor/
 bin/
+.worktrees/
