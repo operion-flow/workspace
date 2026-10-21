@@ -1,41 +1,18 @@
-.PHONY: setup
-setup: ./operion ./interfaces ./operion.dev
-	@echo "Setup completed."
+REPOS := operion operion.dev editor
 
-./operion:
-	@echo "Clonning the operion repository..."
-	@git clone git@github.com:operion-flow/operion.git operion
+.PHONY: setup sync build clean
 
-./interfaces:
-	@echo "Clonning the interfaces repository..."
-	@git clone git@github.com:operion-flow/interfaces.git interfaces
+setup: $(REPOS)
 
-./operion.dev:
-	@echo "Clonning the operion.dev repository..."
-	@git clone git@github.com:operion-flow/operion.dev.git operion.dev
+$(REPOS):
+	git clone git@github.com:operion-flow/$@.git $@
 
-./test:
-	@echo "Clonning the test repository..."
-	@git clone git@github.com:operion-flow/test.git test
+sync: $(REPOS)
+	git pull --rebase origin main
+	for repo in $(REPOS); do git -C $$repo pull --rebase origin main || exit 1; done
 
-# ---
+build:
+	go build -o ./bin/operion ./operion/cmd/operion
 
-sync: ./operion ./interfaces ./operion.dev ./test
-	@echo "Syncing the repositories..."
-	@git pull origin main --rebase
-	@cd ./operion && git pull origin main --rebase
-	@cd ./interfaces && git pull origin main --rebase
-	@cd ./operion.dev && git pull origin main --rebase
-	@cd ./test && git pull origin main --rebase
-
-.PHONY: clean
 clean:
-	@echo "Cleaning up..."
-	@rm -rf ./bin/operion-api
-
-.PHONY: build
-build: ./bin/operion-api
-
-./bin/operion-api:
-	@echo "Building the operion API..."
-	@go build -o ./bin/operion-api ./operion/cmd/operion-api
+	rm -rf ./bin
